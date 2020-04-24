@@ -17,7 +17,7 @@ public class DizionarioDAO {
 	public List<String> listParola() {
 		List<String> result = new ArrayList<>() ;
 		
-		String query = "SELECT nome FROM parola ORDER BY nome" ;
+		String query = "SELECT nome FROM parola ORDER BY nome" ;//restituisce tutte le parole nel dizionario
 		
 		try {
 			Connection conn = DBConnect.getConnection() ;

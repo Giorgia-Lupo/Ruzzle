@@ -14,10 +14,12 @@ import javafx.beans.property.StringProperty;
  *
  */
 public class Board {
-	private List<Pos> positions;
-	private Map<Pos, StringProperty> cells;
+	private List<Pos> positions;//posizioni disponibili nella matrice
+	private Map<Pos, StringProperty> cells; //come chiave una posizione, come valore
+	                                        //bottone collegato direttamente con il
+	                                        //valore nello StirngProperty.
 
-	private int size;
+	private int size; //grandezza matrice 
 
 	/**
 	 * Crea una nuova scacchiera della dimensione specificata
@@ -68,7 +70,7 @@ public class Board {
 	 */
 	public void reset() {
 		for(Pos p: this.positions) {
-			int random = (int)(Math.random()*26) ;
+			int random = (int)(Math.random()*26) ;//genera carattere casuale 
 			String letter = Character.toString((char)('A'+random)) ;
 			this.cells.get(p).set(letter); 
 		}

@@ -98,12 +98,13 @@ public class FXMLController {
     	}
     	
     	
-    	String parola = txtParola.getText() ;
-    	if(parola.length() <= 1) {
+    	String parola = txtParola.getText() ;//parola inserita da utente
+    	
+    	if(parola.length() <= 1) { //parole valide con almeno due lettere
     		txtResult.setText("Devi inserire parole di almeno 2 lettere");
     		return;
     	}
-    	parola = parola.toUpperCase();
+    	parola = parola.toUpperCase(); //la trasformo in maiuscolo e la salvo in parola
     	//controllo che ci siano solo caratteri A-Z
     	if(!parola.matches("[A-Z]+")) {
     		txtResult.setText("Devi inserire solo caratteri alfabetici!");
@@ -114,7 +115,7 @@ public class FXMLController {
     	
     	if(percorso != null) {
     		for(Pos p : percorso) {
-    			letters.get(p).setDefaultButton(true);
+    			letters.get(p).setDefaultButton(true);//proprietà per illumaner il bottone
     		}
     	}
     	else {
@@ -169,7 +170,7 @@ public class FXMLController {
     	this.model = m ;
     	
     	this.letters = new HashMap<>() ;
-    	
+    	//per ogni posizione valida, inserisco riferimento corretto del bottone
     	this.letters.put(new Pos(0,0), let00) ;
     	this.letters.put(new Pos(0,1), let01) ;
     	this.letters.put(new Pos(0,2), let02) ;
@@ -190,10 +191,11 @@ public class FXMLController {
     	this.letters.put(new Pos(3,2), let32) ;
     	this.letters.put(new Pos(3,3), let33) ;
 
+    	//BINDING
     	for(Pos cell: m.getBoard().getPositions()) {
     		this.letters.get(cell).textProperty().bind(m.getBoard().getCellValueProperty(cell));
     	}
-    	
+    	//BINDING PER LOG
     	this.txtStatus.textProperty().bind(m.statusTextProperty());
     	
     }
